@@ -25,7 +25,7 @@ public class Game {
                 WordStore.getWordArray();
                 String randomWord = WordStore.getRandomWord();
                 //System.out.println("Random Word = " + randomWord);
-                while (randomWord != result && level>0) {
+                while (!(randomWord.equals(result)) && level>0) {
                     System.out.println("Level = "+level);
                     String checkChar = ConnectUser.displayWord(randomWord, checkFlag);
                     ShowGuess.checkGuess(randomWord, checkChar);
@@ -79,7 +79,6 @@ public class Game {
                     }
                     if(randomWord.equals(result)){
                         System.out.println("\nCongrats "+userName+", You won");
-                        return;
                     }
                 }
                 if(level<=0){
