@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public class ShowGuess extends Game{
 
-    public static void checkGuess(String randomWord, String checkChar){
+    public static boolean checkGuess(String randomWord, String checkChar){
+        boolean checkLevel = false;
         if (randomWord.contains(checkChar) && !(result.contains(checkChar))){
             ArrayList<Integer> list = new ArrayList<Integer>();
             for(int i = 0; i < randomWord.length(); i++){
@@ -15,9 +16,10 @@ public class ShowGuess extends Game{
                 System.out.println(result);
             }
         } else {
+            checkLevel = true;
             level--;
             System.out.println("No match");
         }
-
+        return checkLevel;
     }
 }

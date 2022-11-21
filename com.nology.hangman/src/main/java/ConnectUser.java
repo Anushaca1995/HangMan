@@ -12,7 +12,7 @@ public class ConnectUser extends Game {
     public static int touchInUser(){
         System.out.println("\nHi "+userName+", Are you ready to start your game? \nPlease ENTER to start or type NO for exit");
         String gameStart = scObj.nextLine();
-        if (gameStart.toLowerCase()=="no") {
+        if (gameStart.toLowerCase().equals("no")) {
             System.out.println("Exit Game");
             return 0;
         }else{

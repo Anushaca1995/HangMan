@@ -13,82 +13,85 @@ public class Game {
 
     protected static int level;
 
-    private static String start;
+    private static String start = "";
 
     public static void main(String[] args) {
         ConnectUser.registerUser();
-        do{
+        do {
             boolean checkFlag = true;
-            level=5;
+            level = 5;
             int check = ConnectUser.touchInUser();
             if (check == 1) {
                 WordStore.getWordArray();
                 String randomWord = WordStore.getRandomWord();
                 //System.out.println("Random Word = " + randomWord);
-                while (!(randomWord.equals(result)) && level>0) {
-                    System.out.println("Level = "+level);
+                while (!(randomWord.equals(result)) && level > 0) {
+                    System.out.println("You have " + level + " guesses left");
                     String checkChar = ConnectUser.displayWord(randomWord, checkFlag);
-                    ShowGuess.checkGuess(randomWord, checkChar);
+                    boolean checkLevel = ShowGuess.checkGuess(randomWord, checkChar);
                     checkFlag = false;
-                    switch(level){
-                        case 0:
-                            System.out.print("              +---+\n" +
-                                    "                |   |\n" +
-                                    "                O   |\n" +
-                                    "               /|\\  |\n" +
-                                    "               / \\  |\n" +
-                                    "                    |\n" +
-                                    "              =========");
-                            break;
-                        case 1:
-                            System.out.println(
-                                    "                +---+\n" +
-                                            "                |   |\n" +
-                                            "                O   |\n" +
-                                            "               /|\\  |\n" +
-                                            "               /    |\n" +
-                                            "                    |\n" +
-                                            "              =========");
-                            break;
-                        case 2:
-                            System.out.println("              +---+\n" +
-                                    "                |   |\n" +
-                                    "                O   |\n" +
-                                    "               /|\\  |\n" +
-                                    "                    |\n" +
-                                    "                    |\n" +
-                                    "              =========");
-                            break;
-                        case 3:
-                            System.out.println("               +---+\n" +
-                                    "                |   |\n" +
-                                    "                O   |\n" +
-                                    "                |   |\n" +
-                                    "                    |\n" +
-                                    "                    |\n" +
-                                    "              =========");
-                            break;
-                        case 4:
-                            System.out.println("              +---+\n" +
-                                    "                |   |\n" +
-                                    "                    |\n" +
-                                    "                    |\n" +
-                                    "                    |\n" +
-                                    "                    |\n" +
-                                    "              =========");
+                    if (checkLevel) {
+                        switch (level) {
+                            case 0:
+                                System.out.print("              +---+\n" +
+                                        "                |   |\n" +
+                                        "                O   |\n" +
+                                        "               /|\\  |\n" +
+                                        "               / \\  |\n" +
+                                        "                    |\n" +
+                                        "              =========");
+                                break;
+                            case 1:
+                                System.out.println(
+                                        "                +---+\n" +
+                                                "                |   |\n" +
+                                                "                O   |\n" +
+                                                "               /|\\  |\n" +
+                                                "                   |\n" +
+                                                "                    |\n" +
+                                                "              =========");
+                                break;
+                            case 2:
+                                System.out.println(
+                                        "              +---+\n" +
+                                        "                |   |\n" +
+                                        "                O   |\n" +
+                                        "                    |\n" +
+                                        "                    |\n" +
+                                        "                    |\n" +
+                                        "              =========");
+                                break;
+                            case 3:
+                                System.out.println("               +---+\n" +
+                                        "                    |\n" +
+                                        "                    |\n" +
+                                        "                    |\n" +
+                                        "                    |\n" +
+                                        "                    |\n" +
+                                        "              =========");
+                                break;
+                            case 4:
+                                System.out.println(
+                                                "                    |\n" +
+                                                "                    |\n" +
+                                                "                    |\n" +
+                                                "                    |\n" +
+                                                "                    |\n" +
+                                                "              =========");
+                        }
                     }
-                    if(randomWord.equals(result)){
-                        System.out.println("\nCongrats "+userName+", You won");
+                    if (randomWord.equals(result)) {
+                        System.out.println("\nCongrats " + userName + ", You won");
                     }
                 }
-                if(level<=0){
-                    System.out.println("\nRandom word was "+randomWord);
+                if (level <= 0) {
+                    System.out.println("\nRandom word was " + randomWord);
                     System.out.println("\n\nGame Over");
                 }
                 System.out.println("\nDo you want to play again? Please enter yes for continue or no for exit");
                 start = (scObj.nextLine()).toLowerCase();
             }
-        } while(start.equals("yes"));
+        } while (start.equals("yes"));
 
     }
 
